@@ -1,50 +1,326 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cesetek — Control de Accesos, Cómputo y Personalización</title>
+<meta name="description" content="Cesetek: sistemas de control de accesos, equipos de cómputo y personalización textil. Seguridad y tecnología para tu negocio.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <header>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+
+<!-- ============ NAV ============ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+
+    <a href="#hero" class="logo" aria-label="Cesetek, inicio">
+      <svg class="logo-badge" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="6" y="3" width="36" height="42" rx="6" fill="var(--color-surface)" stroke="var(--color-secondary)" stroke-width="2"/>
+        <circle cx="24" cy="18" r="7" fill="none" stroke="var(--color-accent)" stroke-width="2.5"/>
+        <path d="M14 36c1.5-6 6-9 10-9s8.5 3 10 9" stroke="var(--color-accent)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <rect x="18" y="7" width="12" height="3" rx="1.5" fill="var(--color-secondary)"/>
+      </svg>
+      <span class="logo-word">CESETEK</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#accesos">Control de Accesos</a></li>
+      <li><a href="#computo">Equipos de Cómputo</a></li>
+      <li><a href="#personalizacion">Personalización</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <div class="nav-auth">
+      <button class="btn btn-ghost" type="button">Iniciar sesión</button>
+      <button class="btn btn-solid" type="button">Registrarse</button>
     </div>
   </div>
 </nav>
-    </header>
-    <script src="/js/bootstrap.bundle.min.js"></script>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+
+      <div class="hero-content">
+        <span class="eyebrow">Sistemas de identificación y control</span>
+        <h1 class="reveal">Seguridad que <span class="accent-text">reconoce</span><br>a los tuyos al instante.</h1>
+        <p class="hero-lead reveal">
+          En Cesetek diseñamos e instalamos control de accesos para negocios, oficinas
+          y residencias — y complementamos tu operación con equipos de cómputo
+          y uniformes personalizados con tu marca.
+        </p>
+        <div class="hero-actions reveal">
+          <button class="btn btn-accent" type="button">Cotiza tu proyecto</button>
+          <a class="btn btn-ghost" href="#accesos">Ver catálogo</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <svg id="scannerSvg" viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="scanBeam" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--color-accent)" stop-opacity="0"/>
+              <stop offset="50%" stop-color="var(--color-accent)" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- reader panel -->
+          <rect x="30" y="20" width="260" height="360" rx="24" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="2"/>
+          <!-- card slot -->
+          <rect x="70" y="60" width="180" height="112" rx="10" fill="var(--color-bg)" stroke="var(--color-secondary)" stroke-width="2"/>
+          <circle cx="98" cy="88" r="12" fill="none" stroke="var(--color-text-muted)" stroke-width="2"/>
+          <rect x="122" y="82" width="90" height="6" rx="3" fill="var(--color-text-muted)"/>
+          <rect x="122" y="96" width="65" height="6" rx="3" fill="var(--color-border)"/>
+          <rect x="86" y="118" width="128" height="6" rx="3" fill="var(--color-border)"/>
+          <rect x="86" y="132" width="90" height="6" rx="3" fill="var(--color-border)"/>
+
+          <!-- scanning beam -->
+          <rect id="beam" x="70" y="60" width="180" height="18" fill="url(#scanBeam)"/>
+
+          <!-- status LED -->
+          <circle id="statusLed" cx="160" cy="212" r="10" fill="var(--color-border)"/>
+          <text id="statusText" x="160" y="248" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="var(--color-text-muted)">EN ESPERA</text>
+
+          <!-- keypad -->
+          <g fill="var(--color-bg)" stroke="var(--color-border)" stroke-width="1.5">
+            <rect x="70" y="270" width="46" height="34" rx="6"/>
+            <rect x="137" y="270" width="46" height="34" rx="6"/>
+            <rect x="204" y="270" width="46" height="34" rx="6"/>
+            <rect x="70" y="314" width="46" height="34" rx="6"/>
+            <rect x="137" y="314" width="46" height="34" rx="6"/>
+            <rect x="204" y="314" width="46" height="34" rx="6"/>
+          </g>
+        </svg>
+      </div>
+
+      <aside class="hero-aside" aria-label="Cifras de confianza">
+        <div class="stat">
+          <span class="stat-num" data-count="12">0</span>
+          <span class="stat-label">años de operación</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="480">0</span>
+          <span class="stat-label">instalaciones activas</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="24">0</span>
+          <span class="stat-label">hrs soporte técnico</span>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ============ SECCIÓN 1: CONTROL DE ACCESOS (principal) ============ -->
+  <section class="section" id="accesos">
+    <div class="section-head reveal">
+      <span class="eyebrow">01 · Apartado principal</span>
+      <h2>Control de Accesos</h2>
+      <p>Soluciones para restringir, registrar y automatizar el paso de personas
+         y vehículos, con soporte e instalación incluidos.</p>
+    </div>
+
+    <div class="card-grid">
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12l4-4M4 12l4 4" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="14" y="4" width="6" height="16" rx="1" stroke="var(--color-accent)" stroke-width="2"/></svg>
+        </div>
+        <h3>Torniquetes y barreras</h3>
+        <p>Control de flujo peatonal y vehicular con lectura de tarjeta, código QR o biometría.</p>
+        <span class="card-price">Desde $18,500 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="var(--color-accent)" stroke-width="2"/><path d="M5 20c1.5-4.5 5-6 7-6s5.5 1.5 7 6" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Biométricos de huella y rostro</h3>
+        <p>Terminales de asistencia y acceso con reconocimiento facial o dactilar en menos de 1 segundo.</p>
+        <span class="card-price">Desde $4,200 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="var(--color-accent)" stroke-width="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="var(--color-accent)" stroke-width="2"/></svg>
+        </div>
+        <h3>Chapas electromagnéticas</h3>
+        <p>Cerraduras de alta retención para puertas de acceso restringido, con respaldo de batería.</p>
+        <span class="card-price">Desde $1,850 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="12" rx="2" stroke="var(--color-accent)" stroke-width="2"/><path d="M8 20h8M12 16v4" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Videoporteros e intercomunicación</h3>
+        <p>Monitoreo y apertura remota para residencias y edificios corporativos.</p>
+        <span class="card-price">Desde $2,600 MXN</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SECCIÓN 2: EQUIPOS DE CÓMPUTO ============ -->
+  <section class="section alt" id="computo">
+    <div class="section-head reveal">
+      <span class="eyebrow">02 · Equipos de cómputo</span>
+      <h2>Equipos que sostienen tu operación</h2>
+      <p>Venta e integración de equipos para oficinas, puntos de venta y centros
+         de monitoreo — configurados y listos para trabajar.</p>
+    </div>
+
+    <div class="card-grid">
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="1.5" stroke="var(--color-secondary)" stroke-width="2"/><path d="M8 20h8" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>PCs de escritorio</h3>
+        <p>Equipos para punto de venta, administración y monitoreo de cámaras 24/7.</p>
+        <span class="card-price">Desde $9,900 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="11" rx="1.5" stroke="var(--color-secondary)" stroke-width="2"/><path d="M2 18h20" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Laptops de trabajo</h3>
+        <p>Equipos portátiles para equipos de venta, supervisión e instalación en campo.</p>
+        <span class="card-price">Desde $12,400 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="var(--color-secondary)" stroke-width="2"/><path d="M9 7h6M9 11h6M9 15h3" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Servidores NVR y almacenamiento</h3>
+        <p>Grabación de cámaras, respaldo de credenciales y bitácoras de acceso.</p>
+        <span class="card-price">Desde $15,700 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Redes y cableado estructurado</h3>
+        <p>Instalación de red para que tus lectores, cámaras y equipos hablen entre sí sin fallas.</p>
+        <span class="card-price">Cotización a medida</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SECCIÓN 3: PERSONALIZACIÓN Y PLAYERAS ============ -->
+  <section class="section" id="personalizacion">
+    <div class="section-head reveal">
+      <span class="eyebrow">03 · Personalización</span>
+      <h2>Uniformes con tu marca</h2>
+      <p>Playeras, polos y uniformes personalizados para tu equipo de trabajo o
+         para reforzar la imagen de tu negocio.</p>
+    </div>
+
+    <div class="customizer reveal">
+      <div class="customizer-preview">
+        <svg id="shirtSvg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path d="M70 20 L40 40 L20 65 L38 85 L55 72 L55 180 L145 180 L145 72 L162 85 L180 65 L160 40 L130 20 L115 32 Q100 42 85 32 Z"
+                fill="var(--shirt-color, #2C4A6E)" stroke="var(--color-border)" stroke-width="2" stroke-linejoin="round"/>
+          <text x="100" y="120" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="20" fill="#fff" opacity="0.9">CESETEK</text>
+        </svg>
+      </div>
+      <div class="customizer-controls">
+        <h3>Elige un color para previsualizar</h3>
+        <div class="swatches" id="swatches">
+          <button class="swatch" style="--sw:#2C4A6E" data-color="#2C4A6E" aria-label="Azul acero"></button>
+          <button class="swatch" style="--sw:#14171C" data-color="#14171C" aria-label="Grafito"></button>
+          <button class="swatch" style="--sw:#3FA9A0" data-color="#3FA9A0" aria-label="Teal"></button>
+          <button class="swatch" style="--sw:#F2A93B" data-color="#F2A93B" aria-label="Ámbar"></button>
+          <button class="swatch" style="--sw:#E4573D" data-color="#E4573D" aria-label="Rojo"></button>
+        </div>
+        <p class="customizer-note">Vista previa de diseño — el bordado y las tallas se confirman al cotizar.</p>
+        <button class="btn btn-accent" type="button">Solicitar muestra</button>
+      </div>
+    </div>
+
+    <div class="card-grid card-grid-3">
+      <article class="card reveal">
+        <h3>Playeras corporativas</h3>
+        <p>Serigrafía, DTF o bordado con el logo de tu empresa.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Uniformes de seguridad</h3>
+        <p>Prendas resistentes para personal de vigilancia e instalación.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Gorras y chalecos</h3>
+        <p>Accesorios personalizados para completar la imagen de tu equipo.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contacto">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <svg class="logo-badge" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="6" y="3" width="36" height="42" rx="6" fill="var(--color-bg)" stroke="var(--color-secondary)" stroke-width="2"/>
+          <circle cx="24" cy="18" r="7" fill="none" stroke="var(--color-accent)" stroke-width="2.5"/>
+          <path d="M14 36c1.5-6 6-9 10-9s8.5 3 10 9" stroke="var(--color-accent)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-word">CESETEK</span>
+      </div>
+      <p>Control de accesos, equipos de cómputo y personalización textil, en un solo proveedor.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Apartados</h4>
+      <ul>
+        <li><a href="#accesos">Control de Accesos</a></li>
+        <li><a href="#computo">Equipos de Cómputo</a></li>
+        <li><a href="#personalizacion">Personalización</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li>Zapopan, Jalisco, México</li>
+        <li>hola@cesetek.mx</li>
+        <li>+52 33 0000 0000</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Boletín</h4>
+      <form class="newsletter" id="newsletterForm">
+        <input type="email" placeholder="tu@correo.com" aria-label="Correo electrónico" required>
+        <button type="submit" class="btn btn-solid">Suscribirme</button>
+      </form>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v6H14v-6h2.6l.4-3h-3V9.6c0-.4.3-.6.7-.6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-3.6-6.7L20 4l-1 3.7A8 8 0 0 1 20 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> Cesetek. Todos los derechos reservados.</p>
+    <button id="backToTop" class="btn-top" aria-label="Volver arriba">↑</button>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
 </body>
 </html>
