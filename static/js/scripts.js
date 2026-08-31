@@ -166,4 +166,67 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---------- 10. Modales de acceso: iniciar sesión / registrarse ----------
+     Usa los componentes Modal de Bootstrap (bootstrap.bundle.min.js).
+     Solo maneja UI: cambio entre modales y feedback de envío,
+     sin lógica real de autenticación. ---------------------------------- */
+  const loginModalEl    = document.getElementById('loginModal');
+  const registerModalEl = document.getElementById('registerModal');
+
+  if (window.bootstrap && loginModalEl && registerModalEl) {
+    const loginModal    = bootstrap.Modal.getOrCreateInstance(loginModalEl);
+    const registerModal = bootstrap.Modal.getOrCreateInstance(registerModalEl);
+
+    // helper: cierra un modal y, cuando termina la transición, abre el otro
+    const switchModal = (fromEl, fromModal, toModal) => {
+      fromEl.addEventListener('hidden.bs.modal', () => toModal.show(), { once: true });
+      fromModal.hide();
+    };
+
+    const goToRegister = document.getElementById('goToRegister');
+    const goToLogin    = document.getElementById('goToLogin');
+
+    if (goToRegister) {
+      goToRegister.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchModal(loginModalEl, loginModal, registerModal);
+      });
+    }
+    if (goToLogin) {
+      goToLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchModal(registerModalEl, registerModal, loginModal);
+      });
+    }
+
+    // feedback visual de envío (sin backend real)
+    const handleAuthSubmit = (form, modal, modalEl, successText) => {
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        const button = form.querySelector('button[type="submit"]');
+        const original = button.innerHTML;
+        button.disabled = true;
+        button.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Procesando…';
+
+        setTimeout(() => {
+          button.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${successText}`;
+          setTimeout(() => {
+            modal.hide();
+            form.reset();
+            button.disabled = false;
+            button.innerHTML = original;
+          }, 900);
+        }, 1000);
+      });
+    };
+
+    handleAuthSubmit(document.getElementById('loginForm'), loginModal, loginModalEl, '¡Bienvenido!');
+    handleAuthSubmit(document.getElementById('registerForm'), registerModal, registerModalEl, '¡Cuenta creada!');
+  }
+
 });
