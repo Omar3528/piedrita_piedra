@@ -2,7 +2,7 @@ class Config:
     SECRET_KEY = 'K3y5xFramw0rk'
     DEBUG      = True
 
-class Development_Config(Config):
+class DevelopmentConfig(Config):
     MYSQL_HOST     = 'localhost'
     MYSQL_USER     = 'root'
     MYSQL_PASSWORD = 'mysql'
@@ -10,5 +10,5 @@ class Development_Config(Config):
 
 
 config = {
-    'development': Development_Config
+    'development': DevelopmentConfig
 }

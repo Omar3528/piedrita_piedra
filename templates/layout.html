@@ -73,20 +73,21 @@
         <h5 class="modal-title" id="registerModalLabel"><i class="fa-solid fa-user-plus"></i> Crear cuenta</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
-      <form id="registerForm" novalidate>
+      <!-- acciona otra animación y cambia la solicitud y desvia el dato a otro lugar: id="registerForm"-->
+      <form action="/signup" method="post"  novalidate>
         <div class="modal-body">
           <div class="mb-3">
             <label for="registerName" class="form-label">Nombre completo</label>
             <div class="input-icon-group">
               <i class="fa-solid fa-user"></i>
-              <input type="text" class="form-control" id="registerName" placeholder="Tu nombre" required>
+              <input type="text" name="nombre" class="form-control" id="registerName" placeholder="Tu nombre" required>
             </div>
           </div>
           <div class="mb-3">
             <label for="registerEmail" class="form-label">Correo electrónico</label>
             <div class="input-icon-group">
               <i class="fa-solid fa-envelope"></i>
-              <input type="email" class="form-control" id="registerEmail" placeholder="tu@correo.com" required>
+              <input type="email" name="correo" class="form-control" id="registerEmail" placeholder="tu@correo.com" required>
             </div>
           </div>
           <div class="mb-3">
@@ -100,7 +101,7 @@
             <label for="registerPassword" class="form-label">Contraseña</label>
             <div class="input-icon-group">
               <i class="fa-solid fa-lock"></i>
-              <input type="password" class="form-control" id="registerPassword" placeholder="••••••••" required>
+              <input type="password" name="clave" class="form-control" id="registerPassword" placeholder="••••••••" required>
             </div>
           </div>
           <div class="form-check mb-1">
