@@ -1,11 +1,19 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect,url_for, flash
 from flask_mysqldb import MySQL
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from config import config 
 from werkzeug.security import generate_password_hash
+from models.entities.User import User
+from models.ModelUser import ModelUser
 
 CesetekApp = Flask(__name__)
 CesetekApp.config.from_object(config['development'])
 db = MySQL (CesetekApp)
+adminUsuarios = LoginManager
+
+@adminUsuarios.user_loader
+def agregarUsuario(id):
+    return ModelUser.get_by_id(db, id)
 
 @CesetekApp.route('/')
 def home():
@@ -21,10 +29,31 @@ def signup():
         regUsuario = db.connection.cursor()
         regUsuario.execute("INSERT INTO usuario (nombre, correo, clave) VALUES (%s,%s,%s)", (nombre, correo, claveCifrada))
         db.connection.commit()
-        return render_template('home.html')
+        regUsuario.close()
+        return redirect(url_for('home'))
     else:
         return render_template('home.html')
-    
+
+@CesetekApp.route('/sginin', methods = ['GET', 'POST'])
+def signin():
+    if request.method == 'POST':
+        usuario = User(0, None, request.form['correo'], request.form['clave'], None)
+        usuarioAutenticado = ModelUser.signin(db, usuario)
+        if usuarioAutenticado is not None:
+            if usuarioAutenticado.clave:
+                login_user(usuarioAutenticado)
+                if usuarioAutenticado.perfil == 'A':
+                    return render_template('admin.html')
+                else:
+                    return render_template('user.html')
+            else: 
+                flash('Contraseña incorrecta')
+                redirect(url_for ('home'))
+        else:
+            flash('Usuario inexistente')
+            redirect(url_for('home'))
+    else:
+        render_template('home.html')
 
 if __name__ == '__main__': 
     CesetekApp.run(debug=True, port=6767)
