@@ -32,13 +32,14 @@
         <h5 class="modal-title" id="loginModalLabel"><i class="fa-solid fa-right-to-bracket"></i> Iniciar sesión</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
-      <form id="loginForm" novalidate>
+      <!--id="loginForm" id="loginEmail"-->
+      <form action="{{url_for('signin')}}" method="post" class="auth-form" novalidate>
         <div class="modal-body">
           <div class="mb-3">
             <label for="loginEmail" class="form-label">Correo electrónico</label>
             <div class="input-icon-group">
               <i class="fa-solid fa-envelope"></i>
-              <input type="email" class="form-control" id="loginEmail" placeholder="tu@correo.com" required>
+              <input type="email" class="form-control" placeholder="tu@correo.com" required>
             </div>
           </div>
           <div class="mb-3">

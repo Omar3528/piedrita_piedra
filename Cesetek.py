@@ -34,7 +34,7 @@ def signup():
     else:
         return render_template('home.html')
 
-@CesetekApp.route('/sginin', methods = ['GET', 'POST'])
+@CesetekApp.route('/signin', methods = ['GET', 'POST'])
 def signin():
     if request.method == 'POST':
         usuario = User(0, None, request.form['correo'], request.form['clave'], None)
@@ -57,4 +57,6 @@ def signin():
 
 if __name__ == '__main__': 
     CesetekApp.run(debug=True, port=6767)
+
+
 

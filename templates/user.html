@@ -1,0 +1,256 @@
+{% extends "layout.html" %}
+{% block titulo %} Cesetek — Control de Accesos, Cómputo y Personalización {% endblock %}
+{% block contenido %}
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+
+      <div class="hero-content">
+        <span class="eyebrow"><i class="fa-solid fa-store"></i> Tienda de sistemas de identificación y control</span>
+        <h1 class="reveal">Seguridad que <span class="accent-text">reconoce</span><br>a los tuyos al instante.</h1>
+        <p class="hero-lead reveal">
+          En Cesetek vendemos e instalamos control de accesos para negocios, oficinas
+          y residencias — y complementamos tu operación con equipos de cómputo
+          y uniformes personalizados con tu marca.
+        </p>
+        <p class="hero-slogan reveal"><i class="fa-solid fa-quote-left"></i> Seguridad, tecnología y estilo — todo en un solo proveedor.</p>
+        <div class="hero-actions reveal">
+          <button class="btn btn-accent" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">
+            <i class="fa-solid fa-cart-shopping"></i> Cotiza tu proyecto
+          </button>
+          <a class="btn btn-ghost" href="#accesos"><i class="fa-solid fa-list"></i> Ver catálogo</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <svg id="scannerSvg" viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="scanBeam" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--color-accent)" stop-opacity="0"/>
+              <stop offset="50%" stop-color="var(--color-accent)" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="var(--color-accent)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- reader panel -->
+          <rect x="30" y="20" width="260" height="360" rx="24" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="2"/>
+          <!-- card slot -->
+          <rect x="70" y="60" width="180" height="112" rx="10" fill="var(--color-bg)" stroke="var(--color-secondary)" stroke-width="2"/>
+          <circle cx="98" cy="88" r="12" fill="none" stroke="var(--color-text-muted)" stroke-width="2"/>
+          <rect x="122" y="82" width="90" height="6" rx="3" fill="var(--color-text-muted)"/>
+          <rect x="122" y="96" width="65" height="6" rx="3" fill="var(--color-border)"/>
+          <rect x="86" y="118" width="128" height="6" rx="3" fill="var(--color-border)"/>
+          <rect x="86" y="132" width="90" height="6" rx="3" fill="var(--color-border)"/>
+
+          <!-- scanning beam -->
+          <rect id="beam" x="70" y="60" width="180" height="18" fill="url(#scanBeam)"/>
+
+          <!-- status LED -->
+          <circle id="statusLed" cx="160" cy="212" r="10" fill="var(--color-border)"/>
+          <text id="statusText" x="160" y="248" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="var(--color-text-muted)">EN ESPERA</text>
+
+          <!-- keypad -->
+          <g fill="var(--color-bg)" stroke="var(--color-border)" stroke-width="1.5">
+            <rect x="70" y="270" width="46" height="34" rx="6"/>
+            <rect x="137" y="270" width="46" height="34" rx="6"/>
+            <rect x="204" y="270" width="46" height="34" rx="6"/>
+            <rect x="70" y="314" width="46" height="34" rx="6"/>
+            <rect x="137" y="314" width="46" height="34" rx="6"/>
+            <rect x="204" y="314" width="46" height="34" rx="6"/>
+          </g>
+        </svg>
+      </div>
+
+      <aside class="hero-aside" aria-label="Cifras de confianza">
+        <div class="stat">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span class="stat-num" data-count="12">0</span>
+          <span class="stat-label">años de operación</span>
+        </div>
+        <div class="stat">
+          <i class="fa-solid fa-building-shield"></i>
+          <span class="stat-num" data-count="480">0</span>
+          <span class="stat-label">instalaciones activas</span>
+        </div>
+        <div class="stat">
+          <i class="fa-solid fa-headset"></i>
+          <span class="stat-num" data-count="24">0</span>
+          <span class="stat-label">hrs soporte técnico</span>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ============ SECCIÓN 1: CONTROL DE ACCESOS (principal) ============ -->
+  <section class="section" id="accesos">
+    <div class="section-intro">
+      <div class="section-head reveal">
+        <span class="eyebrow"><i class="fa-solid fa-star"></i> Apartado principal</span>
+        <h2>Control de Accesos</h2>
+        <p>Soluciones para restringir, registrar y automatizar el paso de personas
+           y vehículos, con soporte e instalación incluidos.</p>
+      </div>
+      <div class="section-media reveal">
+        <img src="https://picsum.photos/seed/cesetek-accesos/900/650" alt="Panel de control de acceso biométrico instalado en una puerta corporativa" loading="lazy">
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <article class="card reveal">
+        <div class="card-icon">
+          <i class="fa-solid fa-road-barrier"></i>
+        </div>
+        <h3>Torniquetes y barreras</h3>
+        <p>Control de flujo peatonal y vehicular con lectura de tarjeta, código QR o biometría.</p>
+        <span class="card-price">Desde $18,500 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">
+          <i class="fa-solid fa-fingerprint"></i>
+        </div>
+        <h3>Biométricos de huella y rostro</h3>
+        <p>Terminales de asistencia y acceso con reconocimiento facial o dactilar en menos de 1 segundo.</p>
+        <span class="card-price">Desde $4,200 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h3>Chapas electromagnéticas</h3>
+        <p>Cerraduras de alta retención para puertas de acceso restringido, con respaldo de batería.</p>
+        <span class="card-price">Desde $1,850 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">
+          <i class="fa-solid fa-video"></i>
+        </div>
+        <h3>Videoporteros e intercomunicación</h3>
+        <p>Monitoreo y apertura remota para residencias y edificios corporativos.</p>
+        <span class="card-price">Desde $2,600 MXN</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SECCIÓN 2: EQUIPOS DE CÓMPUTO ============ -->
+  <section class="section alt" id="computo">
+    <div class="section-intro">
+      <div class="section-head reveal">
+        <span class="eyebrow"><i class="fa-solid fa-microchip"></i> Equipos de cómputo</span>
+        <h2>Equipos que sostienen tu operación</h2>
+        <p>Venta e integración de equipos para oficinas, puntos de venta y centros
+           de monitoreo — configurados y listos para trabajar.</p>
+      </div>
+      <div class="section-media reveal">
+        <img src="https://picsum.photos/seed/cesetek-computo/900/650" alt="Equipo de cómputo y monitores de trabajo en un escritorio de oficina" loading="lazy">
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <article class="card reveal">
+        <div class="card-icon card-icon-alt">
+          <i class="fa-solid fa-desktop"></i>
+        </div>
+        <h3>PCs de escritorio</h3>
+        <p>Equipos para punto de venta, administración y monitoreo de cámaras 24/7.</p>
+        <span class="card-price">Desde $9,900 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon card-icon-alt">
+          <i class="fa-solid fa-laptop"></i>
+        </div>
+        <h3>Laptops de trabajo</h3>
+        <p>Equipos portátiles para equipos de venta, supervisión e instalación en campo.</p>
+        <span class="card-price">Desde $12,400 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon card-icon-alt">
+          <i class="fa-solid fa-server"></i>
+        </div>
+        <h3>Servidores NVR y almacenamiento</h3>
+        <p>Grabación de cámaras, respaldo de credenciales y bitácoras de acceso.</p>
+        <span class="card-price">Desde $15,700 MXN</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon card-icon-alt">
+          <i class="fa-solid fa-network-wired"></i>
+        </div>
+        <h3>Redes y cableado estructurado</h3>
+        <p>Instalación de red para que tus lectores, cámaras y equipos hablen entre sí sin fallas.</p>
+        <span class="card-price">Cotización a medida</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SECCIÓN 3: PERSONALIZACIÓN Y PLAYERAS ============ -->
+  <section class="section" id="personalizacion">
+    <div class="section-intro">
+      <div class="section-head reveal">
+        <span class="eyebrow"><i class="fa-solid fa-palette"></i> Personalización</span>
+        <h2>Uniformes con tu marca</h2>
+        <p>Playeras, polos y uniformes personalizados para tu equipo de trabajo o
+           para reforzar la imagen de tu negocio.</p>
+      </div>
+      <div class="section-media reveal">
+        <img src="https://picsum.photos/seed/cesetek-playeras/900/650" alt="Playeras personalizadas con estampado corporativo listas para entrega" loading="lazy">
+      </div>
+    </div>
+
+    <div class="customizer reveal">
+      <div class="customizer-preview">
+        <svg id="shirtSvg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path d="M70 20 L40 40 L20 65 L38 85 L55 72 L55 180 L145 180 L145 72 L162 85 L180 65 L160 40 L130 20 L115 32 Q100 42 85 32 Z"
+                fill="var(--shirt-color, #2C4A6E)" stroke="var(--color-border)" stroke-width="2" stroke-linejoin="round"/>
+          <text x="100" y="120" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="20" fill="#fff" opacity="0.9">CESETEK</text>
+        </svg>
+      </div>
+      <div class="customizer-controls">
+        <h3><i class="fa-solid fa-fill-drip"></i> Elige un color para previsualizar</h3>
+        <div class="swatches" id="swatches">
+          <button class="swatch" style="--sw:#2C4A6E" data-color="#2C4A6E" aria-label="Azul acero"></button>
+          <button class="swatch" style="--sw:#14171C" data-color="#14171C" aria-label="Grafito"></button>
+          <button class="swatch" style="--sw:#3FA9A0" data-color="#3FA9A0" aria-label="Teal"></button>
+          <button class="swatch" style="--sw:#F2A93B" data-color="#F2A93B" aria-label="Ámbar"></button>
+          <button class="swatch" style="--sw:#E4573D" data-color="#E4573D" aria-label="Rojo"></button>
+        </div>
+        <p class="customizer-note">Vista previa de diseño — el bordado y las tallas se confirman al cotizar.</p>
+        <button class="btn btn-accent" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">
+          <i class="fa-solid fa-tshirt"></i> Solicitar muestra
+        </button>
+      </div>
+    </div>
+
+    <div class="card-grid card-grid-3">
+      <article class="card reveal">
+        <div class="card-icon card-icon-alt">
+          <i class="fa-solid fa-shirt"></i>
+        </div>
+        <h3>Playeras corporativas</h3>
+        <p>Serigrafía, DTF o bordado con el logo de tu empresa.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-icon card-icon-alt">
+          <i class="fa-solid fa-vest"></i>
+        </div>
+        <h3>Uniformes de seguridad</h3>
+        <p>Prendas resistentes para personal de vigilancia e instalación.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-icon card-icon-alt">
+          <i class="fa-solid fa-hat-cowboy"></i>
+        </div>
+        <h3>Gorras y chalecos</h3>
+        <p>Accesorios personalizados para completar la imagen de tu equipo.</p>
+      </article>
+    </div>
+  </section>
+
+
+{% endblock %}
