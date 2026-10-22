@@ -27,7 +27,7 @@ def signup():
         clave  = request.form['clave']
         claveCifrada = generate_password_hash(clave)
         regUsuario = db.connection.cursor()
-        regUsuario.execute("INSERT INTO usuario (nombre, correo, clave) VALUES (%s,%s,%s)", (nombre, correo, claveCifrada))
+        regUsuario.execute("INSERT INTO usuario (nombre, correo, clave)" "VALUES (%s,%s,%s)", (nombre, correo, claveCifrada))
         db.connection.commit()
         regUsuario.close()
         return redirect(url_for('home'))
@@ -43,9 +43,9 @@ def signin():
             if usuarioAutenticado.clave:
                 login_user(usuarioAutenticado)
                 if usuarioAutenticado.perfil == 'A':
-                    return render_template('admin.html')
+                    return redirect(url_for('home_admin'))
                 else:
-                    return render_template('user.html')
+                    return redirect(url_for('home_user'))
             else: 
                 flash('Contraseña incorrecta')
                 redirect(url_for ('home'))
@@ -54,6 +54,26 @@ def signin():
             redirect(url_for('home'))
     else:
         render_template('home.html')
+
+@CesetekApp.route('/signout', methods=['GET', 'POST'])
+def signout():
+    logout_user()
+    return redirect(url_for('home'))
+
+@CesetekApp.route('/home_admin', methods=['GET', 'POST'])
+def home_admin():
+    return render_template('admin.html')
+
+@CesetekApp.route('/home_user', methods=['GET', 'POST'])
+def home_user():
+    return render_template('user.html')
+
+@CesetekApp.route('/sUsuario', methods=['GET', 'POST'])
+@login_required
+def sUsuario():
+    return render_template('users.html')
+
+
 
 if __name__ == '__main__': 
     CesetekApp.run(debug=True, port=6767)
