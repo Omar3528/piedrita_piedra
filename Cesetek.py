@@ -9,9 +9,9 @@ from models.ModelUser import ModelUser
 CesetekApp = Flask(__name__)
 CesetekApp.config.from_object(config['development'])
 db = MySQL (CesetekApp)
-adminUsuarios = LoginManager
+adminUsuario = LoginManager (CesetekApp)
 
-@adminUsuarios.user_loader
+@adminUsuario.user_loader
 def agregarUsuario(id):
     return ModelUser.get_by_id(db, id)
 
