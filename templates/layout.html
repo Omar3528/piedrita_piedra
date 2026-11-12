@@ -44,6 +44,16 @@
       </div>
       <!--id="loginForm" id="loginEmail"-->
       <form action="{{url_for('signin')}}" method="post" class="auth-form" novalidate>
+        {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  {% for message in messages %}
+                    <div class="alert alert-danger" role="alert">
+                      A simple danger alert—check it out!
+                    </div>
+                    {% endfor %}
+                {% endif %}
+              {% endwith %}
+              {% block body %}{% endblock %}
         <div class="modal-body">
           <div class="mb-3">
             <label for="loginEmail" class="form-label">Correo electrónico</label>
