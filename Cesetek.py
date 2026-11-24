@@ -66,7 +66,10 @@ def home_admin():
 
 @CesetekApp.route('/home_user', methods=['GET', 'POST'])
 def home_user():
-    return render_template('user.html')
+    selServicio = db.connection.cursor()
+    selServicio.execute("SELECT * FROM servicio")
+    p = selServicio.close()
+    return render_template('user.html', servicios=p)
 
 @CesetekApp.route('/sUsuario', methods=['GET', 'POST'])
 @login_required

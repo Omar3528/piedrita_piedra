@@ -1,22 +1,6 @@
 {% extends "layout.html" %}
 {% block titulo %} Cesetek — Control de Accesos, Cómputo y Personalización {% endblock %}
 {% block contenido %}
-<div class="container">
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  {% for s sercivios %}
-  <div class="col">
-    <div class="card h-100">
-      <img src="/static/IMG/{{s[7]}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{p[1]}}</h5>
-        <p class="card-text">tipo de pedido: {{s[4]}}, especificaciones de pedido: {{s[5]}}, estatus del pedido: {{s[6]}} </p>
-        <h3>${{ "%.2f"|format(p[#]) }}</h3> <---- para precios
-      </div>
-    </div>
-  </div>
-  </div>
-</div>
-{% endfor %}
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
     <div class="hero-grid">
