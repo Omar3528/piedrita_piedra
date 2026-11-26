@@ -74,13 +74,13 @@ def home_user():
 @CesetekApp.route('/sUsuario', methods=['GET', 'POST'])
 @login_required
 def sUsuario():
-    if current_user =='A':
+    if current_user.perfil == 'A':
         selUsuario = db.connection.cursor()
         selUsuario.execute("SELECT * FROM usuario")
-        u=selUsuario.fetchall()
+        u = selUsuario.fetchall()
         selUsuario.close()
         return render_template('users.html', usuarios=u)
-    else: 
+    else:
         flash('No tiene permisos para acceder a esta página')
         return redirect(url_for('home'))
 
@@ -118,6 +118,9 @@ def uUsuario():
 
     else:
         return redirect(url_for('home'))
+@CesetekApp.route('/sServicio', methods=['GET', 'POST'])
+def login_required:
+
 
 @CesetekApp.route('/dUsuario/<int:id>', methods=['GET', 'POST' ])
 @login_required

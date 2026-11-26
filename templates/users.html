@@ -21,41 +21,39 @@
     </div>
   </div>
 </div>
-  </thead>
-  <tbody>
-    <div class="container"> 
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">nombre</th>
-      <th scope="col">correo</th>
-      <th scope="col">contraseña</th>
-      <th scope="col">perfil</th>
-      <th scope="col" colspan="2">
-            <!-- Button trigger modal -->
+<section class="section">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">nombre</th>
+          <th scope="col">correo</th>
+          <th scope="col">contraseña</th>
+          <th scope="col">perfil</th>
+          <th scope="col" colspan="2">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="fa-solid fa-user-plus fa-2xl"></i>
-
+              <i class="fa-solid fa-user-plus fa-2xl"></i>
             </button>
-      </th>
-    </tr>
-    {% for u in usuarios %}
-    <tr>
-      <th scope="row">{{u[0]}}</th>
-      <td>{{u[1]}}</td>
-      <td>{{u[2]}}</td>
-      <td>{{u[3] | truncate(20)}}</td>
-      <td>{{u[4]}}</td>
-      <td>boton eliminar</td>
-      <td>boton editar</td>
-
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for u in usuarios %}
+        <tr>
+          <th scope="row">{{u[0]}}</th>
+          <td>{{u[1]}}</td>
+          <td>{{u[2]}}</td>
+          <td>{{u[3] | truncate(20)}}</td>
+          <td>{{u[4]}}</td>
+          <td>boton eliminar</td>
+          <td>boton editar</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
